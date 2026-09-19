@@ -1,0 +1,10 @@
+node_modules/
+.wrangler/
+dist/
+.env
+.dev.vars
+test-app-kotlin/.gradle/
+test-app-kotlin/build/
+test-app-kotlin/app/build/
+test-app-kotlin/local.properties
+.DS_Store

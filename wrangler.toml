@@ -1,0 +1,31 @@
+name = "fastnotifications"
+main = "src/index.ts"
+compatibility_date = "2026-09-19"
+
+# Durable Object configuration
+[durable_objects]
+bindings = [{ name = "NOTIFICATION_COORDINATOR", class_name = "NotificationCoordinator" }]
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = [ "NotificationCoordinator" ]
+
+# D1 Database for persistent storage
+[[d1_databases]]
+binding = "DB"
+database_name = "notifications-db"
+database_id = "af84cff6-41ff-4fe9-91f3-82252bb76778"
+
+# Queues for asynchronous notification routing/batching
+[[queues.producers]]
+binding = "NOTIFICATION_QUEUE"
+queue = "notification-queue"
+
+[[queues.consumers]]
+queue = "notification-queue"
+max_batch_size = 50
+max_batch_timeout = 2
+max_retries = 3
+
+[observability]
+enabled = true

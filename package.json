@@ -1,0 +1,33 @@
+{
+  "name": "fastnotifications",
+  "version": "1.0.0",
+  "description": "Production-ready Custom Push Notification Backend using Cloudflare Workers, Durable Objects, D1, and WebSockets",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "d1:create": "wrangler d1 create notifications-db",
+    "d1:migrate:local": "wrangler d1 migrations apply notifications-db --local",
+    "d1:migrate:prod": "wrangler d1 migrations apply notifications-db --remote",
+    "secret:apikey": "wrangler secret put API_KEY",
+    "secret:jwt": "wrangler secret put JWT_SECRET",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "cloudflare-workers",
+    "durable-objects",
+    "push-notifications",
+    "websockets",
+    "d1",
+    "android",
+    "realtime"
+  ],
+  "dependencies": {
+    "itty-router": "^5.0.18"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240919.0",
+    "typescript": "^5.6.2",
+    "wrangler": "^3.78.6"
+  }
+}
